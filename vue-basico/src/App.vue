@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </nav> -->
-    <MenuTelas/>
+    <MenuTelas v-if="this.$router.currentRoute.name != 'Login'"/>
     <router-view/>
   </div>
 </template>
