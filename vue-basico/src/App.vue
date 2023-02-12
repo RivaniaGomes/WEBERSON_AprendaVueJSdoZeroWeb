@@ -27,4 +27,21 @@ body {
   padding: 0;
   font-family: 'Quicksand', sans-serif;
 }
+
+.container {
+  margin-top: 15px;
+}
+
+.titulo {
+  font-weight: 600;
+  color: #363636;
+}
+
+hr {
+  margin: 0;
+}
+
+.sub-container {
+  margin-top: 15px;
+}
 </style>
