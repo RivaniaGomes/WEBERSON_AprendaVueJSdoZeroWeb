@@ -18,6 +18,7 @@
                   <tr>
                     <th>Código</th>
                     <th>Nome</th>
+                    <th>Quantidade</th>
                     <th>Valor</th>
                     <th>Data de Cadastro</th>
                     <th></th>
@@ -32,7 +33,10 @@
   </template>
 .
   <script>
+  import produtoService from '../services/produto-service';
   import Button from '../components/button/Button';
+  import Produto from '@/models/Produto';
+
   export default {
     name: 'ControleDeProdutos',
     components: {
@@ -40,8 +44,23 @@
     },
     data(){
       return{
-       mensagem: 'Estou na tela Controle De Produtos' 
+       produtos:[]
       }
+    },
+    methods: {
+      obterTodosOsProdutos(){
+        produtoService.obterTodos()
+        .then(response => {
+          this.produtos = response.data.map(p => new Produto(p));
+          console.log(this.produtos)
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      }
+    },
+    mounted(){
+      this.obterTodosOsProdutos();
     }
   }
   </script>
