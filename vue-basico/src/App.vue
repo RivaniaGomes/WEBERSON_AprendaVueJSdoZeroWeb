@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </nav> -->
-    <MenuTelas/>
+    <MenuTelas v-if="this.$router.currentRoute.name != 'Login'"/>
     <router-view/>
   </div>
 </template>
@@ -26,5 +26,22 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
+}
+
+.container {
+  margin-top: 15px;
+}
+
+.titulo {
+  font-weight: 600;
+  color: #363636;
+}
+
+hr {
+  margin: 0;
+}
+
+.sub-container {
+  margin-top: 15px;
 }
 </style>
