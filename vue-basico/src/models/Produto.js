@@ -8,4 +8,12 @@ export default class Produto {
         this.quantidadeEstoque = obj.quantidadeEstoque || 0;
         this.dataCadastro = obj.dataCadastro;
     }
+
+    modeloValidoParaCadastro(){
+        return !!this.nome;
+    }
+
+    modeloValidoParaAtualizar(){
+        return !!(this.id && this.nome);
+    }
 }
