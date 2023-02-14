@@ -35,6 +35,7 @@ body {
 .titulo {
   font-weight: 600;
   color: #363636;
+  font-size: 25px;
 }
 
 hr {
