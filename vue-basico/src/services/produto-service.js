@@ -10,7 +10,7 @@ function obterTodos() {
 
 function obterPorId(id) {
     return new Promise((resolve, reject)=> {
-        return api.get(`/produtos${id}`)
+        return api.get(`/produtos/${id}`)
         .then(response => resolve(response))
         .catch(error => reject(error));
     });

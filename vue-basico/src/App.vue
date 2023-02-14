@@ -35,13 +35,32 @@ body {
 .titulo {
   font-weight: 600;
   color: #363636;
-}
-
-hr {
-  margin: 0;
+  font-size: 25px;
+  margin-top: 10px;
 }
 
 .sub-container {
   margin-top: 15px;
 }
+
+/*Override*/
+.btn-primary,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:focus-visible,
+.btn-primary:visited,
+.btn-primary:not(:disabled):not(.disable):active{
+  color: #fff;
+  background-color: var(--cor-primaria);
+  border: var(--cor-primaria);
+  outline: none;
+  box-shadow: none;
+  min-width: 90px;
+}
+.btn-primary:hover{
+  color: #fff;
+  background-color: var(--cor-secundaria);
+  border-color: var(--cor-secundaria);
+}
+
 </style>
