@@ -43,6 +43,15 @@ const routes = [
       }
     },
     {
+      path: '/controle-de-produtos/editar',
+      name: 'EditarProduto',
+      component: Produto,
+      title: 'Editar produtos',
+      meta: {
+        requiredAuth: true
+      }
+    },
+    {
       path: '/controle-de-clientes',
       name: 'ControleDeClientes',
       component: ControleDeClientes,
