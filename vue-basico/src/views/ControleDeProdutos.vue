@@ -13,7 +13,7 @@
         </div>
         <div class="row">
           <div class="col-sm-12">
-              <table class="table">
+              <table class="table table-hover">
                 <thead>
                   <tr>
                     <th>Código</th>
@@ -24,6 +24,16 @@
                     <th></th>
                   </tr>
                 </thead>
+                <tbody>
+                  <tr v-for="item in produtos" :key="item.id">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.nome }}</td>
+                    <td>{{ item.quantidadeEstoque }}</td>
+                    <td>{{ item.valor | real }}</td>
+                    <td>{{ item.dataCadastro | data}}</td>
+                    <td>Editar / Excluir</td>
+                  </tr>
+                </tbody>
               </table>
           </div>
         </div>
@@ -36,11 +46,21 @@
   import produtoService from '../services/produto-service';
   import Button from '../components/button/Button';
   import Produto from '@/models/Produto';
+  import ConversorDeData from '../utils/conversor-data'
+  import ConversorMonetario from '../utils/conversor-monetario'
 
   export default {
     name: 'ControleDeProdutos',
     components: {
       Button,
+    },
+    filters: {
+      data(data){
+        return ConversorDeData.aplicarMascaraEmDataHoraIso(data);
+      },
+      real(valor) {
+        return ConversorMonetario.aplicarMascaraParaRealComPrefixo(valor);
+      }
     },
     data(){
       return{
@@ -52,7 +72,6 @@
         produtoService.obterTodos()
         .then(response => {
           this.produtos = response.data.map(p => new Produto(p));
-          console.log(this.produtos)
         })
         .catch(error => {
           console.log(error);
