@@ -69,6 +69,9 @@
         produtos:[]
       }
     },
+    mounted(){
+      this.obterTodosOsProdutos();
+    },
     methods: {
       adicionarProduto(){
         this.$router.push({name: "NovoProduto"})
@@ -76,8 +79,19 @@
       editarProduto(produto){
         this.$router.push({name: "EditarProduto", params: {id: produto.id}})
       },
-      excluirProduto(){
-        alert('excluir produto')
+      excluirProduto(produto){
+        if(confirm(`Deseja excluir o produto "${produto.id} - ${produto.nome}"`)){
+
+          produtoService.deletar(produto.id)
+          .then(()=>{
+            let indice = this.produtos.findIndex(p => p.id === produto.id);
+            this.produtos.splice(indice, 1);
+            alert("Produto excluido com sucesso")
+          })
+          .catch(error =>{
+            console.log(error);
+          });
+        }
       },
       obterTodosOsProdutos(){
         produtoService.obterTodos()
@@ -89,9 +103,6 @@
         })
       }
     },
-    mounted(){
-      this.obterTodosOsProdutos();
-    }
   }
   </script>
   
