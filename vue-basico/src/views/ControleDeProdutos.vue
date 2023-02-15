@@ -93,10 +93,15 @@
           });
         }
       },
+      ordenarProdutos(a, b) {
+        return (a.id < b.id) ? -1 : (a.id > b.id) ? 1 : 0; //escolher o que vai ser ordernado, aquié o id
+      },
       obterTodosOsProdutos(){
         produtoService.obterTodos()
         .then(response => {
-          this.produtos = response.data.map(p => new Produto(p));
+          let produtos = response.data.map(p => new Produto(p));
+//reverse inverte a ordem do sort, faz o inverso do que está
+          this.produtos = produtos.sort(this.OrdenarProdutos).reverse(); //como a api já é ordernada era sõ colocar produtos.reverse()
         })
         .catch(error => {
           console.log(error);
