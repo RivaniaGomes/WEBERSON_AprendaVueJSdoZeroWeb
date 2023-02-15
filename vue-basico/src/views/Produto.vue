@@ -72,6 +72,7 @@
 <script>
 import Produto from '@/models/Produto'
 import produtoService from '@/services/produto-service'
+import conversorData from '@/utils/conversor-data'
 
 export default {
     // eslint-disable-next-line vue/multi-word-component-names
@@ -110,6 +111,8 @@ export default {
                 return;
             }
 
+            this.produto.dataCadastro = conversorData.aplicarMascaraISOEmFormatoAmericano(this.produto.dataCadastro);
+
             produtoService.cadastrar(this.produto)
             .then(() => {
                 alert('Produto cadastrado com sucesso!');
@@ -124,7 +127,21 @@ export default {
             });
         },
         atualizarProduto(){
-            
+            if(!this.produto.modeloValidoParaAtualizar()){
+                alert('O nome do produto é obrigatório para o cadastro');
+                return;
+            }
+
+            this.produto.dataCadastro = conversorData.aplicarMascaraISOEmFormatoAmericano(this.produto.dataCadastro);
+
+            produtoService.atualizar(this.produto)
+            .then(()=> {
+                alert('Produto atualizado com sucesso!');
+                this.$router.push({name: "ControleDeProdutos"})
+            })
+            .catch(error => {
+                console.log(error);
+            })
         },
         salvarProduto(){
             (this.modoCadastro) ? this.CadastrarProduto() : this.atualizarProduto();

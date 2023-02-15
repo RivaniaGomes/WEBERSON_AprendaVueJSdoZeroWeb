@@ -58,7 +58,7 @@
     },
     filters: {
       data(data){
-        return ConversorDeData.aplicarMascaraEmDataHoraIso(data);
+        return ConversorDeData.aplicarMascaraEmDataIso(data);
       },
       real(valor) {
         return ConversorMonetario.aplicarMascaraParaRealComPrefixo(valor);
