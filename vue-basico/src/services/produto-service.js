@@ -34,11 +34,12 @@ function atualizar(produto) {
 
 function deletar(id) {
     return new Promise((resolve, reject)=> {
-        return api.delete(`/produtos${id}`)
+        return api.delete(`/produtos/${id}`)
         .then(response => resolve(response))
         .catch(error => reject(error));
     });
 }
+
 export default {
     obterTodos,
     obterPorId,

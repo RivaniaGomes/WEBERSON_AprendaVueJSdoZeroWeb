@@ -58,7 +58,7 @@
     },
     filters: {
       data(data){
-        return ConversorDeData.aplicarMascaraEmDataHoraIso(data);
+        return ConversorDeData.aplicarMascaraEmDataIso(data);
       },
       real(valor) {
         return ConversorMonetario.aplicarMascaraParaRealComPrefixo(valor);
@@ -69,6 +69,9 @@
         produtos:[]
       }
     },
+    mounted(){
+      this.obterTodosOsProdutos();
+    },
     methods: {
       adicionarProduto(){
         this.$router.push({name: "NovoProduto"})
@@ -76,22 +79,35 @@
       editarProduto(produto){
         this.$router.push({name: "EditarProduto", params: {id: produto.id}})
       },
-      excluirProduto(){
-        alert('excluir produto')
+      excluirProduto(produto){
+        if(confirm(`Deseja excluir o produto "${produto.id} - ${produto.nome}"`)){
+
+          produtoService.deletar(produto.id)
+          .then(()=>{
+            let indice = this.produtos.findIndex(p => p.id === produto.id);
+            this.produtos.splice(indice, 1);
+            alert("Produto excluido com sucesso")
+          })
+          .catch(error =>{
+            console.log(error);
+          });
+        }
+      },
+      ordenarProdutos(a, b) {
+        return (a.id < b.id) ? -1 : (a.id > b.id) ? 1 : 0; //escolher o que vai ser ordernado, aquié o id
       },
       obterTodosOsProdutos(){
         produtoService.obterTodos()
         .then(response => {
-          this.produtos = response.data.map(p => new Produto(p));
+          let produtos = response.data.map(p => new Produto(p));
+//reverse inverte a ordem do sort, faz o inverso do que está
+          this.produtos = produtos.sort(this.OrdenarProdutos).reverse(); //como a api já é ordernada era sõ colocar produtos.reverse()
         })
         .catch(error => {
           console.log(error);
         })
       }
     },
-    mounted(){
-      this.obterTodosOsProdutos();
-    }
   }
   </script>
   
