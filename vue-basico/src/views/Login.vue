@@ -7,11 +7,13 @@
             label="E-mail" 
             placeHolder="exemplo@email.com.br"
             type="email"
+            v-model="usuario.email"
         />
         <InputLogin 
             label="Senha"
             placeHolder="Digite sua senha"
             type="password"
+            v-model="usuario.senha"
         />
         <Button 
             value="Entrar"
@@ -31,13 +33,19 @@ export default {
     },
     data(){
         return{
-
+            usuario: {
+                email: '',
+                senha: ''
+            }
         }
     },
     methods: {
         login(){
             //criar logica para acessar o sistema
-            this.$router.push({path: '/'}) // pode passar pelo name tbm
+            //awui enviaria os dados de login pra api
+            //se tudo ok segue para tela de controle de produtos
+            //caso contrario, mensagem de acesso invalido, dados invalidos
+            this.$router.push({path: '/controle-de-produtos'}) // pode passar pelo name tbm
         }
     }
 }
