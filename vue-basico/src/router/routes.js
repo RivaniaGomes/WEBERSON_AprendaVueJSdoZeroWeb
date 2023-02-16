@@ -1,8 +1,10 @@
 import Login from '@/views/Login.vue';
 import Dashboard from '@/views/Dashboard.vue';
-import ControleDeProdutos from '@/views/ControleDeProdutos.vue';
 import ControleDeClientes from '@/views/ControleDeClientes.vue';
+import ControleDeProdutos from '@/views/ControleDeProdutos.vue';
+import ListaProdutosCards from '@/views/ListaProdutosCards.vue';
 import Produto from '@/views/Produto.vue';
+
 //@ é um alias para a pasta src
 
 const routes = [
@@ -38,6 +40,15 @@ const routes = [
       name: 'NovoProduto',
       component: Produto,
       title: 'Adicionar produtos',
+      meta: {
+        requiredAuth: true
+      }
+    },
+    {
+      path: '/controle-de-produtos/lista-cards',
+      name: 'ListaProdutosCards',
+      component: ListaProdutosCards,
+      title: 'Lista de produtos em cards',
       meta: {
         requiredAuth: true
       }

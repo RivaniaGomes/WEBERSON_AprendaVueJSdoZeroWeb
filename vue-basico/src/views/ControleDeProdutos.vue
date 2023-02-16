@@ -10,6 +10,9 @@
           <div class="col-sm-2">
               <Button :callback="adicionarProduto" value="Adicionar"></Button>
           </div>
+          <div class="col-sm-10">
+            <a @click="verProdutosEmCards" class="float-right ver-em-cards">Ver em cards</a>
+          </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
@@ -73,11 +76,14 @@
       this.obterTodosOsProdutos();
     },
     methods: {
+      verProdutosEmCards(){
+        this.$router.push({name: "ListaProdutosCards"});
+      },
       adicionarProduto(){
-        this.$router.push({name: "NovoProduto"})
+        this.$router.push({name: "NovoProduto"});
       },
       editarProduto(produto){
-        this.$router.push({name: "EditarProduto", params: {id: produto.id}})
+        this.$router.push({name: "EditarProduto", params: {id: produto.id}});
       },
       excluirProduto(produto){
         this.$swal({
@@ -111,7 +117,7 @@
               title: 'Não foi possível excluir o produto!',
               confirmButtonColor: '#FF3D00',
               animate: true,
-            });git pull
+            });
           });
             }
         });
@@ -141,10 +147,15 @@
   </script>
   
   <style scoped>
-    .icones-tabela {
+    .icones-tabela,
+    .ver-em-cards {
       margin: 5px;
       cursor: pointer;
       color: var(--cor-primaria);
+    }
+  
+    .ver-em-cards {
+      margin-top: 25px;
     }
   
   </style>
