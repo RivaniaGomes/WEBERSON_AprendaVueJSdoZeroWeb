@@ -111,7 +111,7 @@
               title: 'Não foi possível excluir o produto!',
               confirmButtonColor: '#FF3D00',
               animate: true,
-            });
+            });git pull
           });
             }
         });
