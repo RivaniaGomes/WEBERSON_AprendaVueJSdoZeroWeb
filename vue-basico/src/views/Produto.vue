@@ -45,7 +45,7 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <label for="observacao">Observação</label>
-                    <textarea id="observacao" v-model="produto.observacao   " type="text" class="form-control" rows="4"></textarea>
+                    <textarea id="observacao" v-model="produto.observacao" type="text" class="form-control" rows="4"></textarea>
                 </div>
             </div>
         </div>
