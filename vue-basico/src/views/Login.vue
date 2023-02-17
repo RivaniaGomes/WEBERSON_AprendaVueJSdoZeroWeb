@@ -52,6 +52,12 @@ export default {
                 })
                 .catch(error => {
                     if (error.name !== "NavigationDuplicated") {
+                        this.$swal({
+                            icon: 'warning',
+                            title: 'O email ou senha inválido!',
+                            confirmButtonColor: '#FF3D00',
+                            animate: true,
+                        });
                         throw error;
                     }
                 })
