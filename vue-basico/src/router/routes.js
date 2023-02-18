@@ -1,6 +1,8 @@
 import Login from '@/views/Login.vue';
 import Dashboard from '@/views/Dashboard.vue';
 import ControleDeClientes from '@/views/ControleDeClientes.vue';
+import ListaClientesCards from '@/views/ListaClientesCards.vue';
+import Cliente from '@/views/Cliente.vue';
 import ControleDeProdutos from '@/views/ControleDeProdutos.vue';
 import ListaProdutosCards from '@/views/ListaProdutosCards.vue';
 import Produto from '@/views/Produto.vue';
@@ -9,7 +11,7 @@ import Produto from '@/views/Produto.vue';
 
 const routes = [
     {
-      path: '/login',
+      path: '/',
       name: 'Login',
       component: Login,
       title: 'Login',
@@ -18,7 +20,7 @@ const routes = [
       }
     },
     {
-      path: '/',
+      path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard,
       title: 'Dashboard',
@@ -67,6 +69,33 @@ const routes = [
       name: 'ControleDeClientes',
       component: ControleDeClientes,
       title: 'Clientes',
+      meta: {
+        requiredAuth: true
+      }
+    },
+    {
+      path: '/controle-de-clientes/novo',
+      name: 'NovoCliente',
+      component: Cliente,
+      title: 'Adicionar clientes',
+      meta: {
+        requiredAuth: true
+      }
+    },
+    {
+      path: '/controle-de-clientes/lista-cards',
+      name: 'ListaClientesCards',
+      component: ListaClientesCards,
+      title: 'Lista de clientes em cards',
+      meta: {
+        requiredAuth: true
+      }
+    },
+    {
+      path: '/controle-de-clientes/editar',
+      name: 'EditarCliente',
+      component: Cliente,
+      title: 'Editar clientes',
       meta: {
         requiredAuth: true
       }

@@ -18,10 +18,10 @@ router.beforeEach((to, from, next) => {
     } else {
       next();
     }
-  } else if (to.matched.some(rota => rota.meta.requiredAuth)) {
+  } else if (to.matched.some((rota) => rota.meta.requiredAuth)) {
     if (token == null) {
       next({
-        path: "/login",
+        path: "/",
         params: { nextUrl: to.fullPath },
       });
     } else {
@@ -35,4 +35,30 @@ router.beforeEach((to, from, next) => {
     }
   }
 });
+// router.beforeEach((to, from, next) => {
+//   let token = localStorage.getItem("token");
+
+//   if (to.name == "Login") {
+//     if (token) {
+//       next({ name: "ControleDeProdutos" });
+//     } else {
+//       next();
+//     }
+//   } else if (to.matched.some(rota => rota.meta.requiredAuth)) {
+//     if (token == null) {
+//       next({
+//         path: "/login",
+//         params: { nextUrl: to.fullPath },
+//       });
+//     } else {
+//       next();
+//     }
+//   } else {
+//     if (token == null) {
+//       next();
+//     } else {
+//       next({ name: "ControleDeProdutos" });
+//     }
+//   }
+// });
 export default router;

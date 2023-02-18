@@ -1,7 +1,7 @@
 <template>
     <ul class="menu">
         <li>
-            <a @click="() => this.$router.push({ path: '/' })">Dashboard</a>
+            <a @click="() => this.$router.push({ path: '/dashboard' })">Dashboard</a>
         </li>
         <li>
             <a @click="() => this.$router.push({ path: '/controle-de-produtos' })">Produtos</a>
@@ -34,7 +34,7 @@ export default {
                     utilStorage.removerUsuarioNaStorage();
                     utilStorage.removerTokenNaStorage();
 
-                    this.$router.push({ path: '/login' })
+                    this.$router.push({ path: '/' })
                 })
                 .catch(error => {
                     console.log(error);
