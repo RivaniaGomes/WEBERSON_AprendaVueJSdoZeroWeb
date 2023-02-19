@@ -11,10 +11,11 @@
                 <Card>
                     <template v-slot:nome>{{ cliente.nome }} </template>
                     <template v-slot:valor>
-                        {{ cliente.valor | real }}
+                        {{ cliente.cpfOuCnpj }}
                     </template>
                     <template v-slot:observacao>
-                        {{ cliente.observacao }}
+                        {{ cliente.telefone }}
+                        {{ cliente.email }}
                     </template>
                     <template v-slot:acoes>
                         <i @click="editarCliente(cliente)" class="fas fa-pencil-alt icones-tabela"></i>
@@ -36,7 +37,9 @@ export default {
         Card,
     },
     data() {
-        return {};
+        return {
+            currentRoute: '',
+        };
     },
     methods: {
         trocarImagem(cliente) {

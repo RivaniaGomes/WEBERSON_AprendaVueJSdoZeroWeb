@@ -65,7 +65,9 @@ export default {
     Button,
   },
   data() {
-    return {};
+    return {
+      currentRoute: '',
+    };
   },
   methods: {
     verProdutosEmCards() {

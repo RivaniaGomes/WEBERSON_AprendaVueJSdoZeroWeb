@@ -21,31 +21,51 @@
                 </div>
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-2">
                 <div class="form-group">
-                    <label for="quantidade">cpfOuCnpj</label>
-                    <input id="quantidade" v-model="cliente.cpfOuCnpj" type="text" class="form-control">
+                    <label for="perfil-usuario">Perfil</label>
+                    <input id="perfil-usuario" v-model="cliente.idUsuario" type="number" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="cpfOuCnpj">Tipo de pessoa</label>
+                    <div class="cpfOuCnpj">
+                        <input id="cpfOuCnpj" v-model="mascaraCpfOuCnpj" type="radio" name="mascaraCpfOuCnpj" value="###.###.###-##">
+                        Pessoa fisica 
+                    <!-- </div>
+                    <div> -->
+                        <input id="cpfOuCnpj" v-model="mascaraCpfOuCnpj" type="radio" name="mascaraCpfOuCnpj" value="##.###.###/####-##">
+                        Pessoa juridica 
+                    </div>
                 </div>
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-7">
                 <div class="form-group">
-                    <label for="valor">Telefone</label>
-                    <input id="valor" v-model="cliente.valor" type="text" class="form-control">
+                    <label for="cpf-cnpj">CPF / CNPJ</label>
+                    <input id="cpf-cnpj" v-model="cliente.cpfOuCnpj" type="text" v-mask="mascaraCpfOuCnpj" class="form-control">
                 </div>
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label for="data-cadastro">Data cadastro</label>
                     <input id="data-cadastro" v-model="cliente.dataCadastro" type="date" class="form-control">
                 </div>
             </div>
 
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <div class="form-group">
-                    <label for="observacao">E-mail</label>
-                    <textarea id="observacao" v-model="cliente.email" type="text" class="form-control" rows="4"></textarea>
+                    <label for="email">E-mail</label>
+                    <input id="email" v-model="cliente.email" type="email" class="form-control" rows="4"/>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input id="telefone" v-model="cliente.telefone" type="tel" v-mask="'(##) #####-####'"  class="form-control">
                 </div>
             </div>
         </div>
@@ -63,7 +83,7 @@
                     </label>
                 </div>
                 <button @click="cancelarAcao" class="btn btn-default float-right">Cancelar</button>
-                <button @click="salvarProduto" class="btn btn-primary float-right mr-2">Salvar</button>
+                <button @click="salvarCliente" class="btn btn-primary float-right mr-2">Salvar</button>
             </div>
         </div>
     </div>
@@ -82,6 +102,8 @@ export default {
             cliente: new Cliente(),
             modoCadastro: true,
             continuarAdicionando: false,
+            mascaraCpfOuCnpj: true,
+            currentRoute: '',
         }
     },
     mounted(){
@@ -112,7 +134,7 @@ export default {
             this.$router.push({name: "ControleDeClientes"})
         },
         CadastrarCliente(){
-            if(!this.prodclienteuto.modeloValidoParaCadastro()){
+            if(!this.cliente.modeloValidoParaCadastro()){
                 this.$swal({
                     icon: 'warning',
                     title: 'O nome do cliente é obrigatório para o cadastro!',
@@ -194,7 +216,8 @@ export default {
 </script>
 
 <style scoped>
-    textarea{
-        resize: none;
+    .cpfOuCnpj{
+        display: flex;
+        justify-content: space-between;
     }
 </style>

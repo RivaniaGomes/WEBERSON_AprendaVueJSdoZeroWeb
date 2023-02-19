@@ -38,7 +38,9 @@ export default {
         Card,
     },
     data() {
-        return {};
+        return {
+            currentRoute: '',
+        };
     },
     methods: {
         trocarImagem(produto) {

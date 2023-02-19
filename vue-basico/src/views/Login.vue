@@ -25,7 +25,8 @@ export default {
     },
     data() {
         return {
-            usuario: new Usuario()
+            usuario: new Usuario(),
+            currentRoute: '',
         }
     },
     methods: {

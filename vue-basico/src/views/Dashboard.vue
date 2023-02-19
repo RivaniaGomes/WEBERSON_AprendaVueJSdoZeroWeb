@@ -10,7 +10,8 @@ export default {
   name: 'Dashboard',
   data(){
     return{
-     mensagem: 'Estou na tela dashboard' 
+      mensagem: 'Estou na tela dashboard',
+      currentRoute: '',
     }
   }
 }

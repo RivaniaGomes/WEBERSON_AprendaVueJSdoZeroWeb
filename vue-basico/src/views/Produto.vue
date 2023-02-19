@@ -82,6 +82,7 @@ export default {
             produto: new Produto(),
             modoCadastro: true,
             continuarAdicionando: false,
+            currentRoute: '',
         }
     },
     mounted(){

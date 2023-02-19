@@ -26,7 +26,6 @@
               <th>CPF / CNPJ</th>
               <th>E-mail</th>
               <th>Telefone</th>
-              <th>Usuário</th>
               <th>Data de Cadastro</th>
               <th></th>
             </tr>
@@ -38,15 +37,14 @@
               <td>{{ item.cpfOuCnpj }}</td>
               <td>{{ item.email }}</td>
               <td>{{ item.telefone }}</td>
-              <td>{{ item.idUsuario }}</td>
               <td>{{ item.dataCadastro | data }}</td>
               <td>
                 <i
-                  @click="editarProduto(item)"
+                  @click="editarCliente(item)"
                   class="fas fa-pencil-alt icones-tabela"
                 ></i>
                 <i
-                  @click="excluirProduto(item)"
+                  @click="excluirCliente(item)"
                   class="fas fa-trash-alt icones-tabela"
                 ></i>
               </td>
@@ -69,7 +67,9 @@ export default {
     Button,
   },
   data() {
-    return {};
+    return {
+      currentRoute: '',
+    };
   },
   methods: {
     verClientesEmCards() {
@@ -83,6 +83,7 @@ export default {
 </script>
 
 <style scoped>
+
 .icones-tabela,
 .ver-em-cards {
   margin: 5px;

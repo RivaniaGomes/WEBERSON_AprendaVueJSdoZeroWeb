@@ -15,8 +15,8 @@ export default {
     props: {
         label: { type: String. require},
         placeHolder: {type: String},
-        type: { type: String, default: 'text'},
-        value: { type: String, default: 'text'},
+        type: { type: String, default: ''},
+        value: { type: String, default: ''},
     },
     data() {
         return{
